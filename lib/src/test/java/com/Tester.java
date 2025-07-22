@@ -6,15 +6,17 @@ import com.sourav.mathTools.BasicOp;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class MathTest {
+public class Tester {
     @Test
-    void Tester() {
+    void tester() {
         {
             int a = 3;
             int b = 4;
             double c = 4.5;
             double d = 7.5;
+            int e = 0;
             assertEquals(19.0, BasicOp.add(a, b, c, d));
+            assertThrows(ArithmeticException.class, () -> BasicOp.div(a, e));
         }
         {
             int a = 8;
