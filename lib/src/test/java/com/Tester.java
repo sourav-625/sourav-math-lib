@@ -15,7 +15,7 @@ public class Tester {
             double c = 4.5;
             double d = 7.5;
             int e = 0;
-            assertEquals(19.0, BasicOp.add(a, b, c, d));
+            assertEquals(19, BasicOp.add(a, b, c, d));
             assertThrows(ArithmeticException.class, () -> BasicOp.div(a, e));
         }
         {
@@ -28,6 +28,10 @@ public class Tester {
             long a = 24;
             long b = 36;
             assertEquals(12, BasicOp.gcd(a, b));
+        }
+        {
+            Number a = 4.5;
+            assertEquals(true, (a instanceof Number));
         }
     }
 

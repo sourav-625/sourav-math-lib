@@ -44,7 +44,7 @@ public class Matrices {
             return product;
         } catch (IndexOutOfBoundsException e) {
             throw new ArithmeticException(
-                    "For two consecutive matrices number of columns in first matrix should be equal to number rows in second.");
+                    "For multiplication of two consecutive matrices number of columns in first matrix should be equal to number rows in second.");
         }
     }
 

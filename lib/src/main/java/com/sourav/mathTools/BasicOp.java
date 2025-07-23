@@ -5,27 +5,45 @@ public class BasicOp {
     public static Number add(Number... inputs) {
         if (inputs.length < 1)
             throw new IllegalArgumentException("Insufficient arguments");
-        Number sum = 0;
+        double sum = 0;
         for (Number e : inputs) {
-            sum = sum.doubleValue() + e.doubleValue();
-            sum = sum.doubleValue() % 1 == 0 ? (long) sum : sum;
+            sum += e.doubleValue();
+        }
+        if (sum % 1 == 0) {
+            if (sum >= Integer.MIN_VALUE && sum <= Integer.MAX_VALUE) {
+                return (int) sum;
+            } else if (sum >= Long.MIN_VALUE && sum <= Long.MAX_VALUE) {
+                return (long) sum;
+            }
         }
         return sum;
     }
 
     public static Number sub(Number a, Number b) {
-        Number diff = a.doubleValue() - b.doubleValue();
-        diff = diff.doubleValue() % 1 == 0 ? (long) diff : diff;
+        double diff = a.doubleValue() - b.doubleValue();
+        if (diff % 1 == 0) {
+            if (diff >= Integer.MIN_VALUE && diff <= Integer.MAX_VALUE) {
+                return (int) diff;
+            } else if (diff >= Long.MIN_VALUE && diff <= Long.MAX_VALUE) {
+                return (long) diff;
+            }
+        }
         return diff;
     }
 
     public static Number mul(Number... inputs) {
         if (inputs.length < 1)
             throw new IllegalArgumentException("Insufficient argumnets");
-        Number product = 1;
+        double product = 1;
         for (Number num : inputs) {
-            product = product.doubleValue() * num.doubleValue();
-            product = product.doubleValue() % 1 == 0 ? (long) product : product;
+            product *= num.doubleValue();
+        }
+        if (product % 1 == 0) {
+            if (product >= Integer.MIN_VALUE && product <= Integer.MAX_VALUE) {
+                return (int) product;
+            } else if (product >= Long.MIN_VALUE && product <= Long.MAX_VALUE) {
+                return (long) product;
+            }
         }
         return product;
     }
@@ -33,8 +51,14 @@ public class BasicOp {
     public static Number div(Number a, Number b) {
         if (b.doubleValue() == 0)
             throw new ArithmeticException("Attempt to divide by zero");
-        Number quo = a.doubleValue() / b.doubleValue();
-        quo = quo.doubleValue() % 1 == 0 ? (long) quo : quo;
+        double quo = a.doubleValue() / b.doubleValue();
+        if (quo % 1 == 0) {
+            if (quo >= Integer.MIN_VALUE && quo <= Integer.MAX_VALUE) {
+                return (int) quo;
+            } else if (quo >= Long.MIN_VALUE && quo <= Long.MAX_VALUE) {
+                return (long) quo;
+            }
+        }
         return quo;
     }
 
